@@ -1,0 +1,40 @@
+server:
+  port: 8280
+
+encrypt:
+  failOnError: false
+
+security:
+  basic:
+    enabled: false
+  user:
+    name: user
+    password: 123456
+
+management:
+  security:
+    enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: "*"  
+  endpoint:
+    health:
+      show-details: ALWAYS
+
+spring:
+  zipkin:
+    baseUrl: http://zipkin:9411/
+  sleuth:
+    sampler:
+      percentage: 1.0
+    web:
+      skipPattern: (^cleanup.*|.+favicon.*|.*/health$|.*/info$)
+  datasource:
+    url: jdbc:mysql://mysql.sample:3306/sample?useUnicode=true&useSSL=false&characterEncoding=utf8&autoReconnect=true&rewriteBatchedStatements=true
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+
+sample:
+  message: hello from dev 1111
